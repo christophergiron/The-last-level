@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct34abwvlwjyn"]
-
-[ext_resource type="Script" uid="uid://cngcd2k6j2oxc" path="res://gdj/godot/HelloWorld.gdj" id="1_0m1rq"]
+[gd_scene format=3 uid="uid://ct34abwvlwjyn"]
 
 [node name="Node" type="Node"]
-script = ExtResource("1_0m1rq")

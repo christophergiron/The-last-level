@@ -7,7 +7,7 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
 }
 
 godot {
@@ -15,7 +15,6 @@ godot {
 
     // the script registration which you'll attach to nodes are generated into this directory
     registrationFileBaseDir.set(projectDir.resolve("gdj"))
-
 	// Create .gdj files from all JVM scripts
 	isRegistrationFileGenerationEnabled.set(true)
 
