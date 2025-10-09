@@ -29,22 +29,20 @@ class Cucca : Node2D() {
 	override fun _process(delta: Double) {
 		applyGravity(delta)
 		handleInput()
-		queueRedraw() // Redibuja cada frame
+		queueRedraw()
 	}
 
 	private fun applyGravity(delta: Double) {
 		velocityY += gravity * delta
 		position = Vector2(position.x, position.y + velocityY * delta)
 
-		// Evita que caiga más allá del suelo
-		if (position.y > 600.0) {
-			position = Vector2(position.x, 600.0)
+		if (position.y > 780.0) {
+			position = Vector2(position.x, 780.0)
 			velocityY = 0.0
 		}
 	}
 
 	private fun handleInput() {
-		// Salto con teclado o pantalla táctil
 		if (Input.isActionJustPressed("ui_accept") || Input.isMouseButtonPressed(MouseButton.LEFT)) {
 			velocityY = jumpForce
 		}
