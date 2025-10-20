@@ -6,7 +6,7 @@ fqName = godot.Cucca
 relativeSourcePath = src/main/kotlin/godot/Cucca.kt
 baseType = Node2D
 supertypes = [
-	godot.api.Node2D,
+    godot.api.Node2D,
 	godot.api.CanvasItem,
 	godot.api.Node,
 	godot.api.Object,
@@ -16,13 +16,13 @@ supertypes = [
 	kotlin.Any
 ]
 signals = [
-	
+    
 ]
 properties = [
-	
+    
 ]
 functions = [
-	_ready,
+    _ready,
 	_process,
 	_draw
 ]
