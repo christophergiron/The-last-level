@@ -4,9 +4,12 @@
 registeredName = Cucca
 fqName = godot.Cucca
 relativeSourcePath = src/main/kotlin/godot/Cucca.kt
-baseType = Node2D
+baseType = RigidBody2D
 supertypes = [
-    godot.api.Node2D,
+    godot.api.RigidBody2D,
+	godot.api.PhysicsBody2D,
+	godot.api.CollisionObject2D,
+	godot.api.Node2D,
 	godot.api.CanvasItem,
 	godot.api.Node,
 	godot.api.Object,
@@ -23,6 +26,5 @@ properties = [
 ]
 functions = [
     _ready,
-	_process,
-	_draw
+	_physics_process
 ]

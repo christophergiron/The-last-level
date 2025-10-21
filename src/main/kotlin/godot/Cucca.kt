@@ -3,56 +3,35 @@ package godot
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
 import godot.api.Input
-import godot.api.Node2D
-import godot.core.Color
+import godot.api.Node
+import godot.api.RigidBody2D
 import godot.core.MouseButton
-import godot.core.Rect2
 import godot.core.Vector2
 import godot.global.GD
 
 @RegisterClass
-class Cucca : Node2D() {
+class Cucca : RigidBody2D() {
 
-	private var velocityY = 0.0
-	private val gravity = 1000.0
-	private val jumpForce = -350.0
-	private val width = 50.0
-	private val height = 50.0
+	private val jumpPower = 450.0
+	private val maxFallSpeed = 600.0
 
 	@RegisterFunction
 	override fun _ready() {
-		position = Vector2(200.0, 400.0)
-		GD.print("Cucca cargada correctamente")
+		GD.print("Cucca cargada exitosamente")
 	}
 
 	@RegisterFunction
-	override fun _process(delta: Double) {
-		applyGravity(delta)
+	override fun _physicsProcess(delta: Double) {
 		handleInput()
-		queueRedraw()
-	}
-
-	private fun applyGravity(delta: Double) {
-		velocityY += gravity * delta
-		position = Vector2(position.x, position.y + velocityY * delta)
-
-		if (position.y > 780.0) {
-			position = Vector2(position.x, 780.0)
-			velocityY = 0.0
+		if (linearVelocity.y > maxFallSpeed) {
+			linearVelocity = Vector2(linearVelocity.x, maxFallSpeed)
 		}
 	}
 
 	private fun handleInput() {
 		if (Input.isActionJustPressed("ui_accept") || Input.isMouseButtonPressed(MouseButton.LEFT)) {
-			velocityY = jumpForce
+			linearVelocity = Vector2(linearVelocity.x, 0.0)
+			applyCentralImpulse(Vector2(0.0, -jumpPower))
 		}
-	}
-
-	@RegisterFunction
-	override fun _draw() {
-		drawRect(
-			Rect2(Vector2(-width / 2, -height / 2), Vector2(width, height)),
-			Color(1.0, 0.8, 0.2)
-		)
 	}
 }
