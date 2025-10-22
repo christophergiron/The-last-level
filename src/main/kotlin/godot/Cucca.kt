@@ -2,10 +2,14 @@ package godot
 
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
+import godot.api.Area2D
 import godot.api.Input
 import godot.api.Node
 import godot.api.RigidBody2D
+import godot.core.Callable
 import godot.core.MouseButton
+import godot.core.NodePath
+import godot.core.StringName
 import godot.core.Vector2
 import godot.global.GD
 
@@ -32,6 +36,19 @@ class Cucca : RigidBody2D() {
 		if (Input.isActionJustPressed("ui_accept") || Input.isMouseButtonPressed(MouseButton.LEFT)) {
 			linearVelocity = Vector2(linearVelocity.x, 0.0)
 			applyCentralImpulse(Vector2(0.0, -jumpPower))
+		}
+	}
+	@RegisterFunction
+	fun _on_floordetector_body_entered(body: Node) {
+		GD.print("body_entered llamado por: ", body.name)
+
+		if (body.isInGroup("floor")) {
+			GD.print(" Cucca tocó el suelo correctamente")
+		}
+
+		if (body.isInGroup("death_zone")) {
+			GD.print("Cucca cayó en zona de muerte — reiniciando escena")
+			getTree()?.callDeferred("reload_current_scene")
 		}
 	}
 }

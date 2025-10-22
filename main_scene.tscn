@@ -7,8 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfs4"]
 radius = 41.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mm7a"]
-size = Vector2(108, 13.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq1ik"]
+size = Vector2(53, 18.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
 size = Vector2(480, 48)
@@ -30,12 +30,13 @@ script = ExtResource("2_2c62f")
 position = Vector2(40, 39)
 shape = SubResource("CircleShape2D_gyfs4")
 
-[node name="floordetector" type="Area2D" parent="."]
-position = Vector2(44, 47)
+[node name="floordetector" type="Area2D" parent="Cucca"]
+position = Vector2(-2, 0)
+priority = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floordetector"]
-position = Vector2(26, 735.75)
-shape = SubResource("RectangleShape2D_8mm7a")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cucca/floordetector"]
+position = Vector2(43, 78)
+shape = SubResource("RectangleShape2D_hq1ik")
 
 [node name="Techo" type="StaticBody2D" parent="."]
 position = Vector2(0, -20)
@@ -44,7 +45,7 @@ position = Vector2(0, -20)
 position = Vector2(241, -4)
 shape = SubResource("RectangleShape2D_gyfs4")
 
-[node name="Piso" type="StaticBody2D" parent="." groups=["floor"]]
+[node name="Piso" type="StaticBody2D" parent="." groups=["death_zone", "floor"]]
 position = Vector2(11, 789)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
@@ -54,4 +55,4 @@ shape = SubResource("RectangleShape2D_d5x1h")
 [node name="PlumberMan" parent="." instance=ExtResource("3_gyfs4")]
 position = Vector2(439, 736)
 
-[connection signal="body_entered" from="floordetector" to="Cucca" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Cucca/floordetector" to="Cucca" method="_on_floordetector_body_entered"]
