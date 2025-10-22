@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagojuqkws8fg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
+size = Vector2(479, 25)
+
+[node name="Piso" type="StaticBody2D" groups=["death_zone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d5x1h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -241.0
+offset_top = -18.0
+offset_right = 242.0
+offset_bottom = 18.0
+color = Color(1, 0.53, 0.53, 1)

@@ -1,5 +1,4 @@
 .godot/
-gdj/
 jvm/
 /android/
 .gradle
@@ -8,3 +7,4 @@ jvm/
 build
 jvm
 *.apk
+/gdj/godot
