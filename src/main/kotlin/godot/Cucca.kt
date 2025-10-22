@@ -18,6 +18,7 @@ class Cucca : RigidBody2D() {
 
 	private val jumpPower = 450.0
 	private val maxFallSpeed = 600.0
+	private var isDead = false
 
 	@RegisterFunction
 	override fun _ready() {
@@ -33,22 +34,24 @@ class Cucca : RigidBody2D() {
 	}
 
 	private fun handleInput() {
-		if (Input.isActionJustPressed("ui_accept") || Input.isMouseButtonPressed(MouseButton.LEFT)) {
+		if (Input.isActionJustPressed("Jump")) {
 			linearVelocity = Vector2(linearVelocity.x, 0.0)
 			applyCentralImpulse(Vector2(0.0, -jumpPower))
 		}
 	}
+
 	@RegisterFunction
 	fun _on_floordetector_body_entered(body: Node) {
-		GD.print("body_entered llamado por: ", body.name)
-
-		if (body.isInGroup("floor")) {
-			GD.print(" Cucca tocó el suelo correctamente")
-		}
+		GD.print(" Señal recibida de: ${body.name}")
 
 		if (body.isInGroup("death_zone")) {
-			GD.print("Cucca cayó en zona de muerte — reiniciando escena")
-			getTree()?.callDeferred("reload_current_scene")
+			GD.print(" Cucca cayó en zona de muerte")
+			die()
 		}
+	}
+
+	private fun die() {
+		GD.print(" Reiniciando escena...")
+		getTree()?.callDeferred("reload_current_scene")
 	}
 }

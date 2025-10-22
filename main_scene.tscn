@@ -10,14 +10,14 @@
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_0f027")
 
-[node name="Cucca" parent="." instance=ExtResource("2_gyfs4")]
+[node name="Cucca" parent="." groups=["player"] instance=ExtResource("2_gyfs4")]
 position = Vector2(22, 87)
 
 [node name="PlumberMan" parent="." instance=ExtResource("3_gyfs4")]
 position = Vector2(296, 313)
 
 [node name="Piso" parent="." instance=ExtResource("4_hq1ik")]
-position = Vector2(183, 633)
+position = Vector2(240, 650)
 
 [node name="Techo" parent="." instance=ExtResource("3_8mm7a")]
 position = Vector2(177, -16)

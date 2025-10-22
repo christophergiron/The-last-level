@@ -6,9 +6,9 @@
 radius = 31.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hq1ik"]
-size = Vector2(58, 14)
+size = Vector2(63, 82)
 
-[node name="Cucca" type="RigidBody2D"]
+[node name="Cucca" type="RigidBody2D" groups=["Player"]]
 gravity_scale = 1.05
 contact_monitor = true
 max_contacts_reported = 2
@@ -30,7 +30,7 @@ position = Vector2(-2, 0)
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floordetector"]
-position = Vector2(42, 67)
+position = Vector2(42.5, 41)
 shape = SubResource("RectangleShape2D_hq1ik")
 
 [connection signal="body_entered" from="floordetector" to="." method="_on_floordetector_body_entered"]
