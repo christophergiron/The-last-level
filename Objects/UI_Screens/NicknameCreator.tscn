@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://baknncgurhprk"]
+
+[node name="NicknameCreator" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ok" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Aceptar"
+
+[node name="Cancel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="Titulo" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 243.0
+offset_right = 253.0
+offset_bottom = 266.0
+text = "Ingresa tu usuario"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 112.0
+offset_top = 270.0
+offset_right = 253.0
+offset_bottom = 305.0
+placeholder_text = "Usuario"
+autowrap_mode = 2
