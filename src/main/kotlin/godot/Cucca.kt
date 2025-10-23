@@ -43,11 +43,16 @@ class Cucca : RigidBody2D() {
 	@RegisterFunction
 	fun _on_floordetector_body_entered(body: Node) {
 		GD.print(" Señal recibida de: ${body.name}")
+        // Si tocamos el suelo, guardamos y subimos puntaje
+        if (body.name == StringName("Piso")) {
+            val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
+            timerNode?.call("save_current_time")
+        }
 
-		if (body.isInGroup("death_zone")) {
-			GD.print(" Cucca cayó en zona de muerte")
-			die()
-		}
+        if (body.isInGroup("death_zone")) {
+            GD.print(" Cucca cayó en zona de muerte")
+            die()
+        }
 	}
 
 	private fun die() {

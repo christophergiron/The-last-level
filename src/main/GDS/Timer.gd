@@ -10,6 +10,9 @@ signal timeM_update(minutes_added)
 const SAVE_PATH := "user://best_times.json"
 const MAX_SCORES := 5
 
+# Referencia al FirebaseManager
+var firebase_manager
+
 func _on_timer_timeout() -> void:
 	if time_seconds >= 0:
 		time_seconds = time_seconds + 1
@@ -25,19 +28,31 @@ func save_current_time() -> void:
 	var total_seconds = time_minutes * 60 + time_seconds
 	var best_times = load_best_times()
 	
-	best_times.append({
+	var new_time_data = {
 		"username": player_name,
-		"time": total_seconds
-	})
+		"time": total_seconds,
+		"timestamp": Time.get_unix_time_from_system()
+	}
 	
-	best_times.sort_custom(func(a, b): return a["time"] > b["time"])
+	best_times.append(new_time_data)
 	
+	# Ordenar por tiempo (de menor a menor tiempo es mejor)
+	best_times.sort_custom(func(a, b): return a["time"] < b["time"])
+	
+	# Mantener solo los mejores tiempos
 	if best_times.size() > MAX_SCORES:
 		best_times = best_times.slice(0, MAX_SCORES)
 	
+	# Guardar localmente
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(best_times, "\t"))
 	file.close()
+	
+	# Subir a Firestore si está disponible
+	if FirebaseManager.instance and FirebaseManager.instance.has_method("upload_best_times"):
+		FirebaseManager.instance.upload_best_times()
+	else:
+		printerr("FirebaseManager no está disponible")
 
 func load_best_times() -> Array:
 	if FileAccess.file_exists(SAVE_PATH):
