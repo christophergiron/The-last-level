@@ -51,6 +51,11 @@ class Cucca : RigidBody2D() {
 	}
 
 	private fun die() {
+		GD.print("Guardando progreso antes de reiniciar...")
+
+		val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
+		timerNode?.call("save_current_time")
+		
 		GD.print(" Reiniciando escena...")
 		getTree()?.callDeferred("reload_current_scene")
 	}
