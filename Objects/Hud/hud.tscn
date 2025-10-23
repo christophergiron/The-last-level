@@ -1,12 +1,37 @@
-[gd_scene format=3 uid="uid://6q65cp2smcg7"]
+[gd_scene load_steps=2 format=3 uid="uid://6q65cp2smcg7"]
+
+[ext_resource type="Script" uid="uid://d3sojqvfncy1k" path="res://src/main/GDS/hud.gd" id="1_5jxev"]
 
 [node name="HUD" type="CanvasLayer"]
 follow_viewport_scale = 2.0
+script = ExtResource("1_5jxev")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 297.0
-offset_top = 7.0
-offset_right = 355.0
-offset_bottom = 30.0
+offset_left = 295.0
+offset_top = 6.0
+offset_right = 353.0
+offset_bottom = 29.0
 text = "Tiempo"
 horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 20.0
+offset_right = -14.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="Minutos" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="DobleDot" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="Segundos" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "00"

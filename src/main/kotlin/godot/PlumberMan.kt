@@ -23,7 +23,7 @@ class PlumberMan : Node2D() {
 
 	@RegisterFunction
 	override fun _ready() {
-		keyScene = ResourceLoader.load("res://projectile.tscn") as PackedScene
+		keyScene = ResourceLoader.load("res://Objects/Plumber/projectile.tscn") as PackedScene
 		GD.print("PlumberMan listo para lanzar llaves")
 	}
 

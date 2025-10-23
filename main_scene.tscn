@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://xdhebe3l2ihi"]
+[gd_scene load_steps=8 format=3 uid="uid://xdhebe3l2ihi"]
 
 [ext_resource type="Script" uid="uid://du7yya3uirl5p" path="res://src/main/kotlin/godot/Main.kt" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://c436agepdewl" path="res://Objects/Personaje/cucca.tscn" id="2_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://bgfyee7rb83e5" path="res://Objects/Limits/techo.tscn" id="3_8mm7a"]
-[ext_resource type="PackedScene" uid="uid://0qwlvqxhitc7" path="res://plumber_man.tscn" id="3_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://0qwlvqxhitc7" path="res://Objects/Plumber/plumber_man.tscn" id="3_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://bagojuqkws8fg" path="res://Objects/Limits/Limite.tscn" id="4_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://6q65cp2smcg7" path="res://Objects/Hud/hud.tscn" id="6_hq1ik"]
+[ext_resource type="PackedScene" uid="uid://djqie25vaduhg" path="res://Objects/Hud/game_controller.tscn" id="7_nfk4m"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_0f027")
@@ -23,3 +24,8 @@ position = Vector2(240, 650)
 position = Vector2(177, -16)
 
 [node name="HUD" parent="." instance=ExtResource("6_hq1ik")]
+
+[node name="Game Controller" parent="." instance=ExtResource("7_nfk4m")]
+
+[connection signal="timeM_update" from="Game Controller" to="HUD" method="_on_game_controller_time_m_update"]
+[connection signal="timeS_update" from="Game Controller" to="HUD" method="_on_game_controller_time_s_update"]

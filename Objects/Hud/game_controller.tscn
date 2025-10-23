@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://djqie25vaduhg"]
+
+[ext_resource type="Script" uid="uid://6ap1yk6ndte" path="res://src/main/GDS/Timer.gd" id="1_33qb5"]
+
+[node name="Game Controller" type="Node2D"]
+script = ExtResource("1_33qb5")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

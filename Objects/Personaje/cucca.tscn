@@ -25,12 +25,12 @@ color = Color(1, 0, 0, 1)
 position = Vector2(40, 39)
 shape = SubResource("CircleShape2D_gyfs4")
 
-[node name="floordetector" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-2, 0)
 priority = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floordetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(42.5, 41)
 shape = SubResource("RectangleShape2D_hq1ik")
 
-[connection signal="body_entered" from="floordetector" to="." method="_on_floordetector_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_floordetector_body_entered"]
