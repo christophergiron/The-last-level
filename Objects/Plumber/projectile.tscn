@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8fc83xu535t6"]
 
-[sub_resource type="GDScript" id="GDScript_akgne"]
+[ext_resource type="Script" uid="uid://ceqxq3efu8exf" path="res://src/main/kotlin/godot/Projectile.kt" id="1_ln7gx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akgne"]
 
 [node name="Projectile" type="Node2D"]
-script = SubResource("GDScript_akgne")
+script = ExtResource("1_ln7gx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
