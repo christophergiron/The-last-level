@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://baknncgurhprk"]
+[gd_scene load_steps=7 format=3 uid="uid://baknncgurhprk"]
 
 [ext_resource type="Script" uid="uid://vmhug7kys1nb" path="res://src/main/kotlin/godot/UI/Menus/NickCreator.kt" id="1_6u6nr"]
+[ext_resource type="Theme" uid="uid://d4m6u75jmgpj1" path="res://src/main/resources/Sprites/UI/SI.tres" id="2_a163h"]
 [ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_n5x78"]
+[ext_resource type="Texture2D" uid="uid://b67n5isq0a1ut" path="res://src/main/resources/Sprites/Misc/FONDO.png" id="2_wb6fh"]
+[ext_resource type="Theme" uid="uid://dwnrh548tftia" path="res://src/main/resources/Sprites/UI/Back.tres" id="3_56cx0"]
 [ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_v4073"]
 
 [node name="NicknameCreator" type="CanvasLayer"]
 script = ExtResource("1_6u6nr")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+modulate = Color(0.9999997, 0.87197167, 0.60612756, 1)
+position = Vector2(180, 320)
+texture = ExtResource("2_wb6fh")
 
 [node name="Ok" type="Button" parent="."]
 anchors_preset = 8
@@ -13,13 +21,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = 8.5
-offset_right = 38.0
-offset_bottom = 39.5
+offset_left = -60.0
+offset_right = 57.0
+offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Aceptar"
+theme = ExtResource("2_a163h")
 
 [node name="GoToMainTimer" type="Timer" parent="Ok"]
 
@@ -29,13 +36,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = 55.5
-offset_right = 38.0
-offset_bottom = 86.5
+offset_left = -61.0
+offset_top = 86.0
+offset_right = 63.0
+offset_bottom = 138.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Cancelar"
+theme = ExtResource("3_56cx0")
 
 [node name="Titulo" type="Label" parent="."]
 anchors_preset = 8

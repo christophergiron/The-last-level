@@ -1,16 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8fc83xu535t6"]
+[gd_scene load_steps=7 format=3 uid="uid://c8fc83xu535t6"]
 
 [ext_resource type="Script" uid="uid://ceqxq3efu8exf" path="res://src/main/kotlin/godot/Projectile.kt" id="1_ln7gx"]
+[ext_resource type="Texture2D" uid="uid://lhebh5s7fjyc" path="res://src/main/resources/Sprites/Plumberman/Llave Plumber.png" id="2_mmh0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akgne"]
+size = Vector2(32, 12)
+
+[sub_resource type="Animation" id="Animation_aepqg"]
+resource_name = "Llave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_mmh0a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_kicfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_mmh0a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84ub3"]
+_data = {
+&"Llave": SubResource("Animation_aepqg"),
+&"RESET": SubResource("Animation_kicfo")
+}
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_ln7gx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(1, 1, 0.13725491, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_akgne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.0000005, -1)
+scale = Vector2(0.5857143, 0.625)
+texture = ExtResource("2_mmh0a")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_84ub3")
+}
