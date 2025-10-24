@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c436agepdewl"]
+[gd_scene load_steps=6 format=3 uid="uid://c436agepdewl"]
 
 [ext_resource type="Script" uid="uid://d2erqibu44rtx" path="res://src/main/kotlin/godot/Cucca.kt" id="1_k4xyw"]
+[ext_resource type="AudioStream" uid="uid://dnnjdy21yyr6m" path="res://src/main/resources/SFX/flap.ogg" id="2_fqyxx"]
+[ext_resource type="AudioStream" uid="uid://d0ncu8ok37jch" path="res://src/main/resources/SFX/SFX butter.ogg" id="3_re0wy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfs4"]
 radius = 31.0
@@ -32,5 +34,11 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(42.5, 41)
 shape = SubResource("RectangleShape2D_hq1ik")
+
+[node name="flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fqyxx")
+
+[node name="butter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_re0wy")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_floordetector_body_entered"]

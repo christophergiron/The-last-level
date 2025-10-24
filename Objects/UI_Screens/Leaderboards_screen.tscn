@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsuio55nh7uxv"]
+[gd_scene load_steps=4 format=3 uid="uid://bsuio55nh7uxv"]
 
 [ext_resource type="Script" uid="uid://5t116puyb2fi" path="res://src/main/kotlin/godot/UI/Menus/Leaderboards.kt" id="1_r8d1i"]
+[ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_gbs7s"]
+[ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_547nq"]
 
 [node name="LeaderboardsScreen" type="CanvasLayer"]
 script = ExtResource("1_r8d1i")
@@ -62,6 +64,13 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Volver al titulo"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gbs7s")
+autoplay = true
+
+[node name="swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_547nq")
 
 [connection signal="button_down" from="Local" to="." method="_on_local_button_down"]
 [connection signal="button_down" from="Online" to="." method="_on_online_button_down"]

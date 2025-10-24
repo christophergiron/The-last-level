@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc50xy0t3im6b"]
+[gd_scene load_steps=4 format=3 uid="uid://bc50xy0t3im6b"]
 
 [ext_resource type="Script" uid="uid://b0sbnvjg88nka" path="res://src/main/kotlin/godot/UI/Menus/Title.kt" id="1_gksxk"]
+[ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_qj1mx"]
+[ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_iw7rj"]
 
 [node name="TitleScreen" type="CanvasLayer"]
 script = ExtResource("1_gksxk")
@@ -82,6 +84,13 @@ offset_left = 308.0
 offset_top = 8.0
 offset_right = 351.0
 offset_bottom = 48.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qj1mx")
+autoplay = true
+
+[node name="swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iw7rj")
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Leaderbords" to="." method="_on_leaderbords_button_down"]

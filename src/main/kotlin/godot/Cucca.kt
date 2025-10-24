@@ -2,6 +2,7 @@ package godot
 
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
+import godot.api.AudioStreamPlayer
 import godot.api.Input
 import godot.api.Node
 import godot.api.PackedScene
@@ -18,10 +19,15 @@ class Cucca : RigidBody2D() {
 	private val jumpPower = 450.0
 	private val maxFallSpeed = 600.0
 	private var isDead = false
+	private var flap: AudioStreamPlayer? = null
+	private var butter: AudioStreamPlayer? = null
 
 	@RegisterFunction
 	override fun _ready() {
 		GD.print("Cucca cargada exitosamente")
+		// Buscar el nodo de sonido
+		flap = getNodeOrNull("flap") as? AudioStreamPlayer
+		butter = getNodeOrNull("butter") as? AudioStreamPlayer
 	}
 
 	@RegisterFunction
@@ -34,6 +40,7 @@ class Cucca : RigidBody2D() {
 
 	private fun handleInput() {
 		if (Input.isActionJustPressed("Jump")) {
+			flap?.play()
 			linearVelocity = Vector2(linearVelocity.x, 0.0)
 			applyCentralImpulse(Vector2(0.0, -jumpPower))
 		}
@@ -65,7 +72,7 @@ class Cucca : RigidBody2D() {
 		timerNode?.call("save_current_time")
 
 		getTree()?.paused = true
-
+		butter?.play()
 		val root = getTree()?.currentScene
 		root?.addChild(retryInstance)
 

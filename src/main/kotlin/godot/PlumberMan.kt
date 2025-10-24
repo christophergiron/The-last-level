@@ -45,7 +45,7 @@ class PlumberMan : Node2D() {
 
 	@RegisterFunction
 	fun _on_shoot_timer_timeout() {
-		for (i in 0 until 3) {
+		for (i in 0 until 2) {
 			getTree()?.createTimer(0.15 * i)?.timeout?.connect {
 				crearProyectil()
 			}
