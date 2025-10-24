@@ -15,9 +15,6 @@ script = ExtResource("1_0f027")
 [node name="Cucca" parent="." groups=["player"] instance=ExtResource("2_gyfs4")]
 position = Vector2(22, 87)
 
-[node name="PlumberMan" parent="." instance=ExtResource("3_gyfs4")]
-position = Vector2(296, 313)
-
 [node name="Piso" parent="." instance=ExtResource("4_hq1ik")]
 position = Vector2(240, 650)
 
@@ -30,6 +27,9 @@ position = Vector2(177, -16)
 
 [node name="FirebaseManager" type="Node" parent="."]
 script = ExtResource("8_66tet")
+
+[node name="PlumberMan" parent="." instance=ExtResource("3_gyfs4")]
+position = Vector2(271, 305)
 
 [connection signal="timeM_update" from="Game Controller" to="HUD" method="_on_game_controller_time_m_update"]
 [connection signal="timeS_update" from="Game Controller" to="HUD" method="_on_game_controller_time_s_update"]
