@@ -3,7 +3,7 @@ extends Node
 signal timeS_update(seconds_added)
 signal timeM_update(minutes_added)
 
-@export var player_name := "Player1"
+@export var player_name := load_username()
 @export var time_minutes = 0
 @export var time_seconds = 0
 
@@ -23,6 +23,14 @@ func _on_timer_timeout() -> void:
 	
 	timeS_update.emit(time_seconds)
 	timeM_update.emit(time_minutes)
+	
+func load_username() -> String:
+	if FileAccess.file_exists("user://settings.json"):
+		var file = FileAccess.open("user://settings.json", FileAccess.READ)
+		var data = JSON.parse_string(file.get_as_text())
+		file.close()
+		return data.get("username", "Player")
+	return "Player"
 	
 func save_current_time() -> void:
 	var total_seconds = time_minutes * 60 + time_seconds
