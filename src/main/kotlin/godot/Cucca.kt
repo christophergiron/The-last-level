@@ -8,6 +8,7 @@ import godot.api.Node
 import godot.api.PackedScene
 import godot.api.ResourceLoader.load
 import godot.api.RigidBody2D
+import godot.api.AnimationPlayer
 import godot.core.StringName
 import godot.core.Vector2
 import godot.global.GD
@@ -21,13 +22,19 @@ class Cucca : RigidBody2D() {
 	private var isDead = false
 	private var flap: AudioStreamPlayer? = null
 	private var butter: AudioStreamPlayer? = null
+	private var animationPlayer: AnimationPlayer? = null
+	private var floorAnimation: AnimationPlayer? = null
+
+
 
 	@RegisterFunction
 	override fun _ready() {
 		GD.print("Cucca cargada exitosamente")
-		// Buscar el nodo de sonido
 		flap = getNodeOrNull("flap") as? AudioStreamPlayer
 		butter = getNodeOrNull("butter") as? AudioStreamPlayer
+		val piso = getTree()?.currentScene?.findChild("Piso", true, false)
+		floorAnimation = piso?.findChild("AnimationPlayer", true, false) as? AnimationPlayer
+		floorAnimation?.play("Piso")
 	}
 
 	@RegisterFunction
@@ -36,6 +43,16 @@ class Cucca : RigidBody2D() {
 		if (linearVelocity.y > maxFallSpeed) {
 			linearVelocity = Vector2(linearVelocity.x, maxFallSpeed)
 		}
+		val tiltFactor = 0.002
+		val maxTiltUp = -0.5f
+		val maxTiltDown = 0.5f
+
+		val targetRotation = (linearVelocity.y * tiltFactor)
+			.coerceIn(maxTiltUp.toDouble(), maxTiltDown.toDouble())
+			.toFloat()
+
+		// interpolación suave para que no gire bruscamente
+		rotation = rotation + (targetRotation - rotation) * 0.020f
 	}
 
 	private fun handleInput() {
@@ -43,8 +60,12 @@ class Cucca : RigidBody2D() {
 			flap?.play()
 			linearVelocity = Vector2(linearVelocity.x, 0.0)
 			applyCentralImpulse(Vector2(0.0, -jumpPower))
+			animationPlayer = getNodeOrNull("AnimationPlayer") as?
+			AnimationPlayer
+			animationPlayer?.play("Cuca")
 		}
 	}
+
 
 	@RegisterFunction
 	fun _on_floordetector_body_entered(body: Node) {

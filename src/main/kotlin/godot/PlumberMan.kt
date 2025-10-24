@@ -5,6 +5,7 @@ import godot.annotation.RegisterFunction
 import godot.api.*
 import godot.core.*
 import godot.global.GD
+import godot.api.AnimationPlayer
 
 @RegisterClass
 class PlumberMan : Node2D() {
@@ -15,12 +16,14 @@ class PlumberMan : Node2D() {
 	private var maxY = 575.0
 	private var projectileContainer: Node2D? = null
 	private var throwCount = 0
+	private var PlumberAnimation: AnimationPlayer? = null
 
 	@RegisterFunction
 	override fun _ready() {
 		GD.print("PlumberMan cargado correctamente")
 
 		projectileContainer = getNode("ProjectileContainer") as? Node2D
+		PlumberAnimation = getNodeOrNull("AnimationPlayer") as? AnimationPlayer
 
 		val shootTimer = getNode("ShootTimer") as? Timer
 		shootTimer?.connect(
@@ -54,6 +57,7 @@ class PlumberMan : Node2D() {
 
 	private fun crearProyectil() {
 		val proyectil = ColorRect()
+		PlumberAnimation?.play("Plumber")
 		val fase = throwCount % 3
 		val (velocidad, tamano) = when (fase) {
 			0 -> Pair(200.0, Vector2(40.0, 20.0))
