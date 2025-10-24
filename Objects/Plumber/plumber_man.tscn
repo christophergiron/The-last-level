@@ -12,6 +12,7 @@ offset_bottom = 40.0
 color = Color(0, 0.615299, 0.61544, 1)
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="ProjectileContainer" type="Node2D" parent="."]

@@ -27,5 +27,6 @@ properties = [
 functions = [
     _ready,
 	_physics_process,
-	_on_floordetector_body_entered
+	_on_floordetector_body_entered,
+	die
 ]

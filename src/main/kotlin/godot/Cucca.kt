@@ -54,8 +54,8 @@ class Cucca : RigidBody2D() {
 		}
 	}
 
-	private fun die() {
-
+	@RegisterFunction
+	fun die() {
 		val retry_instance = load("res://Objects/Hud/RestartMenu.tscn") as PackedScene
 		val retryInstance = retry_instance.instantiate()
 
@@ -63,8 +63,12 @@ class Cucca : RigidBody2D() {
 
 		val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
 		timerNode?.call("save_current_time")
-		
-		GD.print(" Reiniciando escena...")
-		addChild(retryInstance)
+
+		getTree()?.paused = true
+
+		val root = getTree()?.currentScene
+		root?.addChild(retryInstance)
+
+		GD.print("Game Over mostrado en pantalla.")
 	}
 }
