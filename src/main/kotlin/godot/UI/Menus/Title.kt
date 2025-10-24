@@ -4,6 +4,9 @@ import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
 import godot.api.AudioStreamPlayer
 import godot.api.CanvasLayer
+import godot.core.Callable
+import godot.core.StringName
+import godot.core.VariantArray
 import godot.global.GD
 
 @RegisterClass
@@ -19,34 +22,51 @@ class Title : CanvasLayer() {
 		swoosh = getNodeOrNull("swoosh") as? AudioStreamPlayer
 	}
 
+
+	private fun delayedSceneChange(scenePath: String) {
+		swoosh?.play()
+
+		val tree = getTree() ?: return
+		val timer = tree.createTimer(0.4)
+		
+		val args = VariantArray<Any?>()
+		args.append(scenePath)
+
+		timer?.connect(
+			StringName("timeout"),
+			Callable(this, StringName("_on_delay_finished")).bindv(args)
+		)
+	}
+
+	@RegisterFunction
+	fun _on_delay_finished(scenePath: String) {
+		getTree()?.changeSceneToFile(scenePath)
+	}
+
 	@RegisterFunction
 	fun _on_start_button_down() {
-		swoosh?.play()
-		getTree()?.callDeferred("change_scene_to_file", GAME_FILE)
+		delayedSceneChange(GAME_FILE)
 	}
 
 	@RegisterFunction
 	fun _on_leaderbords_button_down() {
-		swoosh?.play()
-		getTree()?.callDeferred("change_scene_to_file", LEAD_FILE)
+		delayedSceneChange(LEAD_FILE)
 	}
 
 	@RegisterFunction
 	fun _on_story_button_down() {
-		swoosh?.play()
 		GD.print("Detecta")
+		swoosh?.play()
 	}
 
 	@RegisterFunction
 	fun _on_change_user_button_down() {
-		swoosh?.play()
-		getTree()?.callDeferred("change_scene_to_file", CREATE_USER_FILE)
+		delayedSceneChange(CREATE_USER_FILE)
 	}
 
 	@RegisterFunction
 	fun _on_paypal_button_down() {
-		swoosh?.play()
 		GD.print("Detecta")
-
+		swoosh?.play()
 	}
 }
