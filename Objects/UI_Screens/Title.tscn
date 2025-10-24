@@ -1,27 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc50xy0t3im6b"]
+[gd_scene load_steps=10 format=3 uid="uid://bc50xy0t3im6b"]
 
 [ext_resource type="Script" uid="uid://b0sbnvjg88nka" path="res://src/main/kotlin/godot/UI/Menus/Title.kt" id="1_gksxk"]
+[ext_resource type="Texture2D" uid="uid://b67n5isq0a1ut" path="res://src/main/resources/Sprites/Misc/FONDO.png" id="2_cmtfp"]
+[ext_resource type="Theme" uid="uid://c6qa8xyqv16by" path="res://src/main/resources/Sprites/UI/Play.tres" id="2_fc84u"]
 [ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_qj1mx"]
 [ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_iw7rj"]
+[ext_resource type="Theme" uid="uid://rwmyo23st1pp" path="res://src/main/resources/Sprites/UI/Lead.tres" id="4_fbwqb"]
+[ext_resource type="Theme" uid="uid://dg6hmwyy4iue7" path="res://src/main/resources/Sprites/UI/Story.tres" id="5_kx3ix"]
+[ext_resource type="Theme" uid="uid://b8s4p6xvbrsc7" path="res://src/main/resources/Sprites/UI/USR.tres" id="6_icruq"]
+[ext_resource type="Texture2D" uid="uid://vrxtfhpb5je5" path="res://src/main/resources/Sprites/Logos/Tittle.png" id="9_j8s4i"]
 
 [node name="TitleScreen" type="CanvasLayer"]
 script = ExtResource("1_gksxk")
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -170.0
-offset_right = 63.0
-offset_bottom = -138.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "The Last Level"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(180, 320)
+texture = ExtResource("2_cmtfp")
 
 [node name="Start" type="Button" parent="."]
 anchors_preset = 7
@@ -35,7 +29,7 @@ offset_right = 71.5
 offset_bottom = -285.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Iniciar"
+theme = ExtResource("2_fc84u")
 
 [node name="Leaderbords" type="Button" parent="."]
 anchors_preset = 7
@@ -49,7 +43,7 @@ offset_right = 71.5
 offset_bottom = -168.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Clasificacion"
+theme = ExtResource("4_fbwqb")
 
 [node name="Story" type="Button" parent="."]
 anchors_preset = 7
@@ -63,7 +57,7 @@ offset_right = 71.5
 offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Historia"
+theme = ExtResource("5_kx3ix")
 
 [node name="ChangeUser" type="Button" parent="."]
 anchors_preset = 3
@@ -77,7 +71,7 @@ offset_right = -7.0
 offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "U"
+theme = ExtResource("6_icruq")
 
 [node name="PAYPAL" type="TextureButton" parent="."]
 offset_left = 308.0
@@ -91,6 +85,10 @@ autoplay = true
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_iw7rj")
+
+[node name="Tittle" type="Sprite2D" parent="."]
+position = Vector2(180, 216)
+texture = ExtResource("9_j8s4i")
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Leaderbords" to="." method="_on_leaderbords_button_down"]

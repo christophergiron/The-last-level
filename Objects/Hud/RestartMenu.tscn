@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqcbu0m1phkso"]
+[gd_scene load_steps=3 format=3 uid="uid://dqcbu0m1phkso"]
 
 [ext_resource type="Script" uid="uid://cue2168ohaiwi" path="res://src/main/kotlin/godot/Retry_menu.kt" id="1_k5qy4"]
+[ext_resource type="Texture2D" uid="uid://degp8knw2uxac" path="res://src/main/resources/Sprites/UI/menu back.png" id="2_iavid"]
 
 [node name="RestartMenu" type="CanvasLayer"]
 process_mode = 2
@@ -28,9 +29,16 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Intenta otra vez"
 
+[node name="Again" type="Sprite2D" parent="VBoxContainer/Restart"]
+
 [node name="Title" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Volver a la pantalla de titulo"
+
+[node name="Menu" type="Sprite2D" parent="VBoxContainer/Title"]
+position = Vector2(109.5, 26.499992)
+scale = Vector2(1.5859374, 1.5078123)
+texture = ExtResource("2_iavid")
 
 [connection signal="button_down" from="VBoxContainer/Restart" to="." method="_on_restart_button_down"]
 [connection signal="button_down" from="VBoxContainer/Title" to="." method="_on_title_button_down"]
