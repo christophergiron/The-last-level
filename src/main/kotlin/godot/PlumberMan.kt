@@ -25,9 +25,7 @@ class PlumberMan : Node2D() {
 	}
 
 	private fun moverVertical(delta: Double) {
-
 		position = Vector2(position.x, position.y + direction * speed * delta)
-
 		if (position.y < minY) direction = 1
 		if (position.y > maxY) direction = -1
 	}
