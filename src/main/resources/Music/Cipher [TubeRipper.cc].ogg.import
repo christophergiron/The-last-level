@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c8gmmjwmon6gq"
+path="res://.godot/imported/Cipher [TubeRipper.cc].ogg-655ba3bb3824c1cdbdd7f1ec4ea98b7a.oggvorbisstr"
+
+[deps]
+
+source_file="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg"
+dest_files=["res://.godot/imported/Cipher [TubeRipper.cc].ogg-655ba3bb3824c1cdbdd7f1ec4ea98b7a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

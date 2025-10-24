@@ -13,7 +13,9 @@ config_version=5
 config/name="The last level"
 run/main_scene="uid://bc50xy0t3im6b"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.29411766, 0.4117647, 0.18431373, 1)
+boot_splash/image="uid://bbbev68qx4g4u"
+config/icon="uid://uyk7ksjwaq14"
 
 [autoload]
 
@@ -48,5 +50,6 @@ Jump={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true

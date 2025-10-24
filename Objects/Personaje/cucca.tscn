@@ -1,25 +1,106 @@
-[gd_scene load_steps=4 format=3 uid="uid://c436agepdewl"]
+[gd_scene load_steps=10 format=3 uid="uid://c436agepdewl"]
 
 [ext_resource type="Script" uid="uid://d2erqibu44rtx" path="res://src/main/kotlin/godot/Cucca.kt" id="1_k4xyw"]
+[ext_resource type="AudioStream" uid="uid://dnnjdy21yyr6m" path="res://src/main/resources/SFX/flap.ogg" id="2_fqyxx"]
+[ext_resource type="AudioStream" uid="uid://d0ncu8ok37jch" path="res://src/main/resources/SFX/SFX butter.ogg" id="3_re0wy"]
+[ext_resource type="Texture2D" uid="uid://cg5etlgg84hqf" path="res://src/main/resources/Sprites/Player/cuca.png" id="4_ounfb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfs4"]
-radius = 31.0
+radius = 17.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hq1ik"]
-size = Vector2(63, 82)
+size = Vector2(38, 22)
+
+[sub_resource type="Animation" id="Animation_wnep5"]
+resource_name = "Cuca"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuca:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ounfb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuca:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuca:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_rq4g5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuca:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ounfb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuca:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuca:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0gww"]
+_data = {
+&"Cuca": SubResource("Animation_wnep5"),
+&"RESET": SubResource("Animation_rq4g5")
+}
 
 [node name="Cucca" type="RigidBody2D" groups=["Player"]]
 gravity_scale = 1.05
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_k4xyw")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 71.0
-offset_bottom = 70.0
-color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(40, 39)
@@ -30,7 +111,24 @@ position = Vector2(-2, 0)
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(42.5, 41)
+position = Vector2(40, 40)
 shape = SubResource("RectangleShape2D_hq1ik")
+
+[node name="flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fqyxx")
+
+[node name="butter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_re0wy")
+
+[node name="Cuca" type="Sprite2D" parent="."]
+position = Vector2(42, 32)
+scale = Vector2(1.34375, 1.265625)
+texture = ExtResource("4_ounfb")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k0gww")
+}
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_floordetector_body_entered"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://baknncgurhprk"]
+[gd_scene load_steps=4 format=3 uid="uid://baknncgurhprk"]
 
 [ext_resource type="Script" uid="uid://vmhug7kys1nb" path="res://src/main/kotlin/godot/UI/Menus/NickCreator.kt" id="1_6u6nr"]
+[ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_n5x78"]
+[ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_v4073"]
 
 [node name="NicknameCreator" type="CanvasLayer"]
 script = ExtResource("1_6u6nr")
@@ -27,19 +29,40 @@ layout_mode = 2
 text = "Cancelar"
 
 [node name="Titulo" type="Label" parent="."]
-offset_left = 112.0
-offset_top = 243.0
-offset_right = 253.0
-offset_bottom = 266.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -91.5
+offset_right = 70.5
+offset_bottom = -68.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Ingresa tu usuario"
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 112.0
-offset_top = 270.0
-offset_right = 253.0
-offset_bottom = 305.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -60.5
+offset_right = 70.5
+offset_bottom = -25.5
+grow_horizontal = 2
+grow_vertical = 2
 placeholder_text = "Usuario"
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_n5x78")
+autoplay = true
+
+[node name="swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v4073")
 
 [connection signal="button_down" from="VBoxContainer/Ok" to="." method="_on_ok_button_down"]
 [connection signal="button_down" from="VBoxContainer/Cancel" to="." method="_on_cancel_button_down"]

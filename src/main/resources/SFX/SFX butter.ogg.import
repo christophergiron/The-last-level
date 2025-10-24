@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d0ncu8ok37jch"
+path="res://.godot/imported/SFX butter.ogg-13671c5d4d2eff748c2a82fb539dad54.oggvorbisstr"
+
+[deps]
+
+source_file="res://src/main/resources/SFX/SFX butter.ogg"
+dest_files=["res://.godot/imported/SFX butter.ogg-13671c5d4d2eff748c2a82fb539dad54.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

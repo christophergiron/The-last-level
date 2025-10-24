@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d080oxj10be0k"
+path="res://.godot/imported/Bama Country [TubeRipper.cc].ogg-5b05e48b6ce2fa497709e88ab378dd1c.oggvorbisstr"
+
+[deps]
+
+source_file="res://src/main/resources/Music/Bama Country [TubeRipper.cc].ogg"
+dest_files=["res://.godot/imported/Bama Country [TubeRipper.cc].ogg-5b05e48b6ce2fa497709e88ab378dd1c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

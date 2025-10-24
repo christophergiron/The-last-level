@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqcbu0m1phkso"]
+[gd_scene load_steps=3 format=3 uid="uid://dqcbu0m1phkso"]
 
 [ext_resource type="Script" uid="uid://cue2168ohaiwi" path="res://src/main/kotlin/godot/Retry_menu.kt" id="1_k5qy4"]
+[ext_resource type="Theme" uid="uid://dnn5fglbmmcmi" path="res://src/main/resources/Sprites/UI/Again.tres" id="2_iavid"]
 
 [node name="RestartMenu" type="CanvasLayer"]
 process_mode = 2
@@ -26,6 +27,7 @@ horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_iavid")
 text = "Intenta otra vez"
 
 [node name="Title" type="Button" parent="VBoxContainer"]
