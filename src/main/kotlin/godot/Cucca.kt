@@ -2,13 +2,11 @@ package godot
 
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
-import godot.api.Area2D
 import godot.api.Input
 import godot.api.Node
+import godot.api.PackedScene
+import godot.api.ResourceLoader.load
 import godot.api.RigidBody2D
-import godot.core.Callable
-import godot.core.MouseButton
-import godot.core.NodePath
 import godot.core.StringName
 import godot.core.Vector2
 import godot.global.GD
@@ -16,6 +14,7 @@ import godot.global.GD
 @RegisterClass
 class Cucca : RigidBody2D() {
 
+	private val RETRY_MENU = "res://Objects/Hud/RestartMenu.tscn"
 	private val jumpPower = 450.0
 	private val maxFallSpeed = 600.0
 	private var isDead = false
@@ -43,25 +42,29 @@ class Cucca : RigidBody2D() {
 	@RegisterFunction
 	fun _on_floordetector_body_entered(body: Node) {
 		GD.print(" Señal recibida de: ${body.name}")
-        // Si tocamos el suelo, guardamos y subimos puntaje
-        if (body.name == StringName("Piso")) {
-            val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
-            timerNode?.call("save_current_time")
-        }
+		// Si tocamos el suelo, guardamos y subimos puntaje
+		if (body.name == StringName("Piso")) {
+			val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
+			timerNode?.call("save_current_time")
+		}
 
-        if (body.isInGroup("death_zone")) {
-            GD.print(" Cucca cayó en zona de muerte")
-            die()
-        }
+		if (body.isInGroup("death_zone")) {
+			GD.print(" Cucca cayó en zona de muerte")
+			die()
+		}
 	}
 
 	private fun die() {
+
+		val retry_instance = load("res://Objects/Hud/RestartMenu.tscn") as PackedScene
+		val retryInstance = retry_instance.instantiate()
+
 		GD.print("Guardando progreso antes de reiniciar...")
 
 		val timerNode = getTree()?.currentScene?.findChild("Game Controller", true, false)
 		timerNode?.call("save_current_time")
 		
 		GD.print(" Reiniciando escena...")
-		getTree()?.callDeferred("reload_current_scene")
+		addChild(retryInstance)
 	}
 }

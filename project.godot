@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The last level"
-run/main_scene="uid://xdhebe3l2ihi"
+run/main_scene="uid://bc50xy0t3im6b"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

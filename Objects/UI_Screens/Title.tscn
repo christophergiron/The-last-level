@@ -1,15 +1,11 @@
-[gd_scene format=3 uid="uid://bc50xy0t3im6b"]
+[gd_scene load_steps=2 format=3 uid="uid://bc50xy0t3im6b"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://b0sbnvjg88nka" path="res://src/main/kotlin/godot/UI/Menus/Title.kt" id="1_gksxk"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_gksxk")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
 offset_left = 116.0
 offset_top = 153.0
 offset_right = 242.0
@@ -19,7 +15,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Start" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,7 +29,6 @@ grow_vertical = 2
 text = "Iniciar"
 
 [node name="Leaderbords" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -49,7 +43,6 @@ grow_vertical = 2
 text = "Clasificacion"
 
 [node name="Story" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -64,16 +57,20 @@ grow_vertical = 0
 text = "Historia"
 
 [node name="ChangeUser" type="Button" parent="."]
-layout_mode = 0
-offset_left = 322.0
-offset_top = 604.0
-offset_right = 350.0
-offset_bottom = 631.0
+offset_left = 325.0
+offset_top = 602.0
+offset_right = 353.0
+offset_bottom = 633.0
 text = "U"
 
 [node name="PAYPAL" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 308.0
 offset_top = 8.0
 offset_right = 351.0
 offset_bottom = 48.0
+
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="Leaderbords" to="." method="_on_leaderbords_button_down"]
+[connection signal="button_down" from="Story" to="." method="_on_story_button_down"]
+[connection signal="button_down" from="ChangeUser" to="." method="_on_change_user_button_down"]
+[connection signal="button_down" from="PAYPAL" to="." method="_on_paypal_button_down"]

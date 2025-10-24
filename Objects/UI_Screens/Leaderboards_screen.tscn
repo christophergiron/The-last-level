@@ -1,15 +1,11 @@
-[gd_scene format=3 uid="uid://bsuio55nh7uxv"]
+[gd_scene load_steps=2 format=3 uid="uid://bsuio55nh7uxv"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://5t116puyb2fi" path="res://src/main/kotlin/godot/UI/Menus/Leaderboards.kt" id="1_r8d1i"]
+
+[node name="LeaderboardsScreen" type="CanvasLayer"]
+script = ExtResource("1_r8d1i")
 
 [node name="Local" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,15 +20,13 @@ grow_vertical = 2
 text = "Local"
 
 [node name="Online" type="Button" parent="."]
-layout_mode = 0
 offset_left = 112.0
 offset_top = 392.0
 offset_right = 248.0
 offset_bottom = 468.0
 text = "En linea"
 
-[node name="Online2" type="Button" parent="."]
-layout_mode = 1
+[node name="Back" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -47,7 +41,6 @@ grow_vertical = 0
 text = "Volver al titulo"
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
 offset_left = 113.0
 offset_top = 139.0
 offset_right = 249.0
@@ -55,3 +48,7 @@ offset_bottom = 207.0
 text = "Leaderboards"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="Local" to="." method="_on_local_button_down"]
+[connection signal="button_down" from="Online" to="." method="_on_online_button_down"]
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]
