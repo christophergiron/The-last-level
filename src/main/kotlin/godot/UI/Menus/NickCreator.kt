@@ -12,15 +12,16 @@ import java.util.regex.Pattern
 
 @RegisterClass
 class NickCreator : CanvasLayer() {
-
 	private val MAIN_MENU_FILE = "res://Objects/UI_Screens/Title.tscn"
 	private val SETTINGS_PATH = "user://settings.json"
+	//late int para evitar cpmprovaciones para null
 	private lateinit var textEdit: TextEdit
 	private lateinit var okButton: Button
 	private lateinit var cancelButton: Button
 	private lateinit var errorLabel: godot.api.Label
 	private lateinit var errorTimer: godot.api.Timer
 	private lateinit var mainMenuTimer: godot.api.Timer
+	//Sonidos
 	private var swoosh: AudioStreamPlayer? = null
 
 

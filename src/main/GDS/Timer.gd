@@ -44,8 +44,7 @@ func save_current_time() -> void:
 	
 	best_times.append(new_time_data)
 	
-	# Ordenar por tiempo (de menor a menor tiempo es mejor)
-	best_times.sort_custom(func(a, b): return a["time"] < b["time"])
+	best_times.sort_custom(func(a, b): return a["time"] > b["time"])
 	
 	# Mantener solo los mejores tiempos
 	if best_times.size() > MAX_SCORES:
