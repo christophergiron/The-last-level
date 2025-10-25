@@ -33,6 +33,10 @@ texture = ExtResource("9_j8s4i")
 position = Vector2(0, 460)
 texture = ExtResource("2_fbwqb")
 
+[node name="Piso5" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, -365)
+texture = ExtResource("2_fbwqb")
+
 [node name="Start" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -62,6 +66,7 @@ grow_vertical = 0
 theme = ExtResource("4_fbwqb")
 
 [node name="Story" type="Button" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

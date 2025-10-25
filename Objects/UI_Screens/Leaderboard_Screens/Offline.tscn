@@ -37,6 +37,10 @@ texture = ExtResource("3_elqpb")
 position = Vector2(0, 557)
 texture = ExtResource("3_elqpb")
 
+[node name="Piso5" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, -366)
+texture = ExtResource("3_elqpb")
+
 [node name="Atras" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5

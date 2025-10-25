@@ -37,6 +37,10 @@ texture = ExtResource("8_hv4o8")
 position = Vector2(0, 363)
 texture = ExtResource("8_hv4o8")
 
+[node name="Piso5" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, -366)
+texture = ExtResource("8_hv4o8")
+
 [node name="Ok" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
