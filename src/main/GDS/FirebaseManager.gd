@@ -1,5 +1,7 @@
 extends Node
 
+signal leaderboard_loaded(data) #variable con la señal que le manda a godot
+
 # Hace que esta clase esté disponible globalmente
 static var instance
 
@@ -213,6 +215,9 @@ func get_best_times() -> Array:
 				best_times.append(doc.data)
 	
 	print("Se obtuvieron ", best_times.size(), " registros de Firestore")
+	
+	emit_signal("leaderboard_loaded", best_times) #señal que le manda a godot
+	
 	return best_times
 
 # Maneja errores emitidos por Firebase.Firestore
