@@ -239,5 +239,7 @@ func _handle_task_finished(task : FirestoreTask):
 	
 	if task.error.keys().size() > 0:
 		error.emit(task.error)
-		
+		# Avoid returning Nil for functions that declare Array as return type (e.g., query, list)
+		return []
+	
 	return task.data

@@ -11,6 +11,9 @@ var firebase_initialized = false
 var auth_initialized = false
 var auth_in_progress = false
 
+# Señal para notificar cuando se obtienen los mejores tiempos
+signal best_times_ready(data)
+
 func _init():
 	instance = self
 
@@ -189,31 +192,56 @@ func get_best_times() -> Array:
 	
 	print("Obteniendo los mejores tiempos de Firestore...")
 	
-	# Crear una promesa para manejar la respuesta asíncrona
-	var query = firestore.collection("best_times")
-	query = query.order_by("time", firestore.QUERY_DIRECTION_ASCENDING)
-	query = query.limit(5)
-	
-	# Realizar la consulta
-	var task = query.get()
-	
-	# Esperar a que se complete la consulta
-	var result = await task.task_finished
-	
-	# Verificar si hubo un error
-	if task.error:
-		printerr("Error al obtener datos de Firestore: ", task.error)
-		return []
-	
-	# Procesar los documentos
-	var best_times = []
-	if result and result.has("documents"):
-		for doc in result.documents:
-			if doc and doc.has("data"):
-				best_times.append(doc.data)
-	
-	print("Se obtuvieron ", best_times.size(), " registros de Firestore")
-	return best_times
+	# Construir consulta usando FirestoreQuery (API del plugin)
+	var q := FirestoreQuery.new()
+	q.from("best_times", false)
+	q.order_by("time", FirestoreQuery.DIRECTION.DESCENDING)
+	q.limit(5)
+
+	var result = await firestore.query(q) # devuelve Array[FirestoreDocument]
+
+	# Procesar los documentos a Dictionary normal
+	var best_times: Array = []
+	if typeof(result) == TYPE_ARRAY:
+		for doc in result:
+			if doc and doc.has_method("get_unsafe_document"):
+				best_times.append(doc.get_unsafe_document())
+
+	# Normalizar y ordenar por tiempo ascendente en cliente por seguridad
+	var normalized: Array = []
+	for rec in best_times:
+		if typeof(rec) == TYPE_DICTIONARY:
+			var t = rec.get("time", null)
+			var tnum := -1.0
+			if typeof(t) in [TYPE_FLOAT, TYPE_INT]:
+				tnum = float(t)
+			elif typeof(t) == TYPE_STRING:
+				var parsed = str(t).to_float()
+				if parsed > 0 or t == "0" or t == "0.0":
+					tnum = parsed
+			if tnum >= 0.0:
+				normalized.append({
+					"username": str(rec.get("username", "???")),
+					"time": tnum,
+					"timestamp": rec.get("timestamp", 0)
+				})
+
+	normalized.sort_custom(func(a, b):
+		return a["time"] > b["time"]
+	)
+
+	# Tomar los 5 mejores
+	var top5: Array = []
+	for i in range(min(5, normalized.size())):
+		top5.append(normalized[i])
+
+	print("Se obtuvieron ", top5.size(), " registros de Firestore")
+	return top5
+
+# Solicita los mejores tiempos y emite una señal cuando estén listos
+func request_best_times() -> void:
+	var data = await get_best_times()
+	emit_signal("best_times_ready", data)
 
 # Maneja errores emitidos por Firebase.Firestore
 func _on_firestore_error(err):
@@ -227,8 +255,7 @@ func _on_firestore_error(err):
 		message = str(inner.get("message", ""))
 		printerr("Firestore error [%s %s]: %s" % [code, status, message])
 	else:
-		printerr("Firestore error: %s" % [str(err)])
-
+				printerr("Firestore error: %s" % [str(err)])
 
 # Aplica configuración de Firebase en tiempo de ejecución si el .env no fue cargado
 func apply_runtime_firebase_config() -> void:
