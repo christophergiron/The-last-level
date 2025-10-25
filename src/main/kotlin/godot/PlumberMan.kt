@@ -16,15 +16,17 @@ class PlumberMan : Node2D() {
 	private var maxY = 575.0
 	private var projectileContainer: Node2D? = null
 	private var throwCount = 0
-	private var PlumberAnimation: AnimationPlayer? = null
+	private var animationPlayer: AnimationPlayer? = null
+	private var animationPlayer2: AnimationPlayer? = null
+
 
 	@RegisterFunction
 	override fun _ready() {
 		GD.print("PlumberMan cargado correctamente")
 
 		projectileContainer = getNode("ProjectileContainer") as? Node2D
-		PlumberAnimation = getNodeOrNull("AnimationPlayer") as? AnimationPlayer
-
+		animationPlayer = getNodeOrNull("AnimationPlayer") as? AnimationPlayer
+		animationPlayer2 = getNodeOrNull("AnimationPlayer2") as? AnimationPlayer
 		val shootTimer = getNode("ShootTimer") as? Timer
 		shootTimer?.connect(
 			StringName("timeout"),
@@ -44,6 +46,8 @@ class PlumberMan : Node2D() {
 		val y = getPosition().y
 		if (y < minY) direction = 1
 		if (y > maxY) direction = -1
+		animationPlayer2?.play("Water")
+
 	}
 
 	@RegisterFunction
@@ -57,7 +61,7 @@ class PlumberMan : Node2D() {
 
 	private fun crearProyectil() {
 		val proyectil = ColorRect()
-		PlumberAnimation?.play("Plumber")
+		animationPlayer?.play("Plumber")
 		val fase = throwCount % 3
 		val (velocidad, tamano) = when (fase) {
 			0 -> Pair(200.0, Vector2(40.0, 20.0))
