@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc50xy0t3im6b"]
+[gd_scene load_steps=11 format=3 uid="uid://bc50xy0t3im6b"]
 
 [ext_resource type="Script" uid="uid://b0sbnvjg88nka" path="res://src/main/kotlin/godot/UI/Menus/Title.kt" id="1_gksxk"]
 [ext_resource type="Texture2D" uid="uid://b67n5isq0a1ut" path="res://src/main/resources/Sprites/Misc/FONDO.png" id="2_cmtfp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://rwmyo23st1pp" path="res://src/main/resources/Sprites/UI/Lead.tres" id="4_fbwqb"]
 [ext_resource type="Theme" uid="uid://dg6hmwyy4iue7" path="res://src/main/resources/Sprites/UI/Story.tres" id="5_kx3ix"]
 [ext_resource type="Theme" uid="uid://b8s4p6xvbrsc7" path="res://src/main/resources/Sprites/UI/USR.tres" id="6_icruq"]
+[ext_resource type="AudioStream" uid="uid://csr2albmdwm03" path="res://src/main/resources/SFX/Totalmente de acuerdo contigo.wav" id="9_cmtfp"]
 [ext_resource type="Texture2D" uid="uid://vrxtfhpb5je5" path="res://src/main/resources/Sprites/Logos/Tittle.png" id="9_j8s4i"]
 
 [node name="TitleScreen" type="CanvasLayer"]
@@ -102,6 +103,9 @@ offset_bottom = 48.0
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_iw7rj")
+
+[node name="deacuerdo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_cmtfp")
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Leaderbords" to="." method="_on_leaderbords_button_down"]

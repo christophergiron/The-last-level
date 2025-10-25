@@ -17,10 +17,12 @@ class Title : CanvasLayer() {
 	private val LEAD_FILE = "res://Objects/UI_Screens/Leaderboards_screen.tscn"
 	private val CREATE_USER_FILE = "res://Objects/UI_Screens/NicknameCreator.tscn"
 	private var swoosh: AudioStreamPlayer? = null
+	private var deacuerdo: AudioStreamPlayer? = null
 
 	@RegisterFunction
 	override fun _ready() {
 		swoosh = getNodeOrNull("swoosh") as? AudioStreamPlayer
+		deacuerdo = getNodeOrNull("deacuerdo") as? AudioStreamPlayer
 	}
 
 
@@ -73,6 +75,6 @@ class Title : CanvasLayer() {
 	@RegisterFunction
 	fun _on_paypal_button_down() {
 		GD.print("Detecta")
-		swoosh?.play()
+		deacuerdo?.play()
 	}
 }
