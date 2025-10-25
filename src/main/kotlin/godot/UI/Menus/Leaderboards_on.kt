@@ -33,11 +33,29 @@ class Leaderboards_on : CanvasLayer() {
             principal.text = "No se encontró FirebaseManager"
         }
     }
+    private fun delayedSceneChange(scenePath: String) {
+        swoosh?.play()
+
+        val tree = getTree() ?: return
+        val timer = tree.createTimer(0.4)
+
+        val args = VariantArray<Any?>()
+        args.append(scenePath)
+
+        timer?.connect(
+            StringName("timeout"),
+            Callable(this, StringName("_on_delay_finished")).bindv(args)
+        )
+    }
+
+    @RegisterFunction
+    fun _on_delay_finished(scenePath: String) {
+        getTree()?.changeSceneToFile(scenePath)
+    }
 
     @RegisterFunction
     fun _on_atras_button_down() {
-        swoosh?.play()
-        getTree()?.changeSceneToFile(LEAD_MENU_FILE)
+        delayedSceneChange(LEAD_MENU_FILE)
     }
 
     @RegisterFunction

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsuio55nh7uxv"]
+[gd_scene load_steps=9 format=3 uid="uid://bsuio55nh7uxv"]
 
 [ext_resource type="Script" uid="uid://5t116puyb2fi" path="res://src/main/kotlin/godot/UI/Menus/Leaderboards.kt" id="1_r8d1i"]
 [ext_resource type="Texture2D" uid="uid://b67n5isq0a1ut" path="res://src/main/resources/Sprites/Misc/FONDO.png" id="2_g1abl"]
-[ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="2_gbs7s"]
 [ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="3_547nq"]
 [ext_resource type="Theme" uid="uid://c8eifw5fs4r81" path="res://src/main/resources/Sprites/UI/escribir.tres" id="3_nunv8"]
 [ext_resource type="Theme" uid="uid://baqcehapeo866" path="res://src/main/resources/Sprites/UI/Local.tres" id="3_villt"]
@@ -93,10 +92,6 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("5_0rr37")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_gbs7s")
-autoplay = true
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_547nq")

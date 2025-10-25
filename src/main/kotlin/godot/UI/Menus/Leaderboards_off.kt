@@ -5,6 +5,11 @@ import godot.api.AudioStreamPlayer
 import godot.api.CanvasLayer
 import godot.api.FileAccess
 import godot.api.JSON
+import godot.core.Callable
+import godot.core.Callable.Companion.invoke
+import godot.core.StringName
+import godot.core.VariantArray
+import godot.core.VariantArray.Companion.invoke
 import godot.global.GD
 
 @RegisterClass
@@ -24,6 +29,26 @@ class Leaderboards_off : CanvasLayer() {
 		val text = drawLeaderboard()
 		Principal.text = text
 	}
+
+    private fun delayedSceneChange(scenePath: String) {
+        swoosh?.play()
+
+        val tree = getTree() ?: return
+        val timer = tree.createTimer(0.4)
+
+        val args = VariantArray<Any?>()
+        args.append(scenePath)
+
+        timer?.connect(
+            StringName("timeout"),
+            Callable(this, StringName("_on_delay_finished")).bindv(args)
+        )
+    }
+
+    @RegisterFunction
+    fun _on_delay_finished(scenePath: String) {
+        getTree()?.changeSceneToFile(scenePath)
+    }
 
 	@RegisterFunction
 	fun drawLeaderboard(): String {
@@ -81,7 +106,6 @@ class Leaderboards_off : CanvasLayer() {
 
 	@RegisterFunction
 	fun _on_atras_button_down() {
-		swoosh?.play()
-		getTree()?.changeSceneToFile(LEAD_MENU_FILE)
+        delayedSceneChange(LEAD_MENU_FILE)
 	}
 }

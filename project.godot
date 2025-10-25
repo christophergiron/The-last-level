@@ -21,6 +21,7 @@ config/icon="uid://uyk7ksjwaq14"
 
 FirebaseManager="*res://src/main/GDS/FirebaseManager.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+MusicManager="*res://Objects/UI_Screens/music_manager.tscn"
 
 [display]
 

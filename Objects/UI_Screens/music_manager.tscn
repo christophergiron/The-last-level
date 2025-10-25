@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck8xjahcpn7gc"]
+
+[ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="1_8sy2g"]
+
+[node name="MusicManager" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_8sy2g")
+volume_db = 4.435
+autoplay = true

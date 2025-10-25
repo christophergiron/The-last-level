@@ -4,6 +4,7 @@ import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
 import godot.api.AudioStreamPlayer
 import godot.api.CanvasLayer
+import godot.api.Node
 import godot.core.Callable
 import godot.core.StringName
 import godot.core.VariantArray
@@ -45,6 +46,11 @@ class Title : CanvasLayer() {
 
 	@RegisterFunction
 	fun _on_start_button_down() {
+		val root = getTree()?.root
+		val music = root?.getNodeOrNull("MusicManager") as? Node
+		val player = music?.getNodeOrNull("AudioStreamPlayer") as? AudioStreamPlayer
+		player?.stop()
+
 		delayedSceneChange(GAME_FILE)
 	}
 
