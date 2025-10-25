@@ -8,26 +8,47 @@ process_mode = 2
 script = ExtResource("1_k5qy4")
 
 [node name="GameOver" type="Label" parent="."]
-offset_left = 67.5
-offset_top = 273.5
-offset_right = 292.5
-offset_bottom = 296.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -47.5
+offset_right = 112.5
+offset_bottom = -24.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Game over"
 horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="."]
-offset_left = 67.5
-offset_top = 300.5
-offset_right = 292.5
-offset_bottom = 331.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -20.5
+offset_right = 112.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_iavid")
 text = "Intenta otra vez"
 
 [node name="Title" type="Button" parent="."]
-offset_left = 67.5
-offset_top = 335.5
-offset_right = 292.5
-offset_bottom = 366.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = 17.5
+offset_right = 112.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Volver a la pantalla de titulo"
 
 [connection signal="button_down" from="Restart" to="." method="_on_restart_button_down"]
