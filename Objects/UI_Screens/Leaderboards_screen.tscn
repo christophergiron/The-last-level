@@ -28,8 +28,7 @@ position = Vector2(1, 192)
 texture = ExtResource("8_villt")
 
 [node name="Piso2" type="Sprite2D" parent="Piso2"]
-modulate = Color(0.80127037, 0.7361004, 0.86780596, 1)
-position = Vector2(180, 683)
+position = Vector2(0, 288)
 texture = ExtResource("8_villt")
 
 [node name="Piso3" type="Sprite2D" parent="Piso2"]
