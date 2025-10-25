@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://br5henmnqj6vo"]
+[gd_scene load_steps=9 format=3 uid="uid://br5henmnqj6vo"]
 
 [ext_resource type="Script" uid="uid://bl0o5gc4bkmgg" path="res://src/main/kotlin/godot/UI/Menus/Leaderboards_on.kt" id="1_43kkp"]
 [ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="1_eqh2t"]
 [ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="2_43kkp"]
+[ext_resource type="Texture2D" uid="uid://b67n5isq0a1ut" path="res://src/main/resources/Sprites/Misc/FONDO.png" id="2_oepst"]
+[ext_resource type="Theme" uid="uid://dwnrh548tftia" path="res://src/main/resources/Sprites/UI/Back.tres" id="3_7x63s"]
+[ext_resource type="Theme" uid="uid://c8eifw5fs4r81" path="res://src/main/resources/Sprites/UI/escribir.tres" id="4_mj1x2"]
+[ext_resource type="Texture2D" uid="uid://b267uoi40hjkh" path="res://src/main/resources/Sprites/UI/Fondo Label.png" id="5_tqew0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvmvc"]
+texture = ExtResource("5_tqew0")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 12, 64, 19)
 
 [node name="Online" type="CanvasLayer"]
 script = ExtResource("1_43kkp")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+modulate = Color(1.92523e-07, 0.64537996, 0.8973343, 1)
+position = Vector2(180, 320)
+texture = ExtResource("2_oepst")
 
 [node name="Atras" type="Button" parent="."]
 anchors_preset = 7
@@ -19,17 +36,18 @@ offset_right = 60.5
 offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Atras"
+theme = ExtResource("3_7x63s")
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -53.5
-offset_top = 155.0
-offset_right = 53.5
-offset_bottom = 204.0
+offset_left = -71.0
+offset_top = 74.0
+offset_right = 76.0
+offset_bottom = 182.0
 grow_horizontal = 2
+theme = ExtResource("4_mj1x2")
 text = "Leaderboards
 En Linea"
 horizontal_alignment = 1
@@ -40,12 +58,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -85.0
-offset_right = 159.0
-offset_bottom = 181.0
+offset_left = -157.0
+offset_top = -132.0
+offset_right = 161.0
+offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_mj1x2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rvmvc")
 horizontal_alignment = 1
 autowrap_mode = 2
 

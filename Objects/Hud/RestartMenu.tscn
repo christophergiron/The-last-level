@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqcbu0m1phkso"]
+[gd_scene load_steps=5 format=3 uid="uid://dqcbu0m1phkso"]
 
 [ext_resource type="Script" uid="uid://cue2168ohaiwi" path="res://src/main/kotlin/godot/Retry_menu.kt" id="1_k5qy4"]
 [ext_resource type="Theme" uid="uid://dnn5fglbmmcmi" path="res://src/main/resources/Sprites/UI/Again.tres" id="2_iavid"]
+[ext_resource type="Theme" uid="uid://c8eifw5fs4r81" path="res://src/main/resources/Sprites/UI/escribir.tres" id="2_lkruq"]
+[ext_resource type="Theme" uid="uid://dwnrh548tftia" path="res://src/main/resources/Sprites/UI/Back.tres" id="4_uy2nm"]
 
 [node name="RestartMenu" type="CanvasLayer"]
 process_mode = 2
@@ -13,29 +15,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.5
-offset_top = -47.5
-offset_right = 112.5
-offset_bottom = -24.5
+offset_left = -112.0
+offset_top = -91.0
+offset_right = 113.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_lkruq")
 text = "Game over"
 horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.50100005
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.50100005
 anchor_bottom = 0.5
-offset_left = -112.5
-offset_top = -20.5
-offset_right = 112.5
-offset_bottom = 10.5
+offset_left = -114.360016
+offset_top = -46.0
+offset_right = 110.639984
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_iavid")
-text = "Intenta otra vez"
 
 [node name="Title" type="Button" parent="."]
 anchors_preset = 8
@@ -43,13 +45,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.5
-offset_top = 17.5
-offset_right = 112.5
-offset_bottom = 48.5
+offset_left = -114.0
+offset_top = 63.0
+offset_right = 111.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Volver a la pantalla de titulo"
+theme = ExtResource("4_uy2nm")
 
 [connection signal="button_down" from="Restart" to="." method="_on_restart_button_down"]
 [connection signal="button_down" from="Title" to="." method="_on_title_button_down"]

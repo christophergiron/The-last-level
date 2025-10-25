@@ -16,8 +16,8 @@ class PlumberMan : Node2D() {
 	private var maxY = 575.0
 	private var projectileContainer: Node2D? = null
 	private var throwCount = 0
-	private var animationPlayer: AnimationPlayer? = null
-	private var animationPlayer2: AnimationPlayer? = null
+	private var animationPlumber: AnimationPlayer? = null
+	private var animationWater: AnimationPlayer? = null
 
 
 	@RegisterFunction
@@ -25,8 +25,8 @@ class PlumberMan : Node2D() {
 		GD.print("PlumberMan cargado correctamente")
 
 		projectileContainer = getNode("ProjectileContainer") as? Node2D
-		animationPlayer = getNodeOrNull("AnimationPlayer") as? AnimationPlayer
-		animationPlayer2 = getNodeOrNull("AnimationPlayer2") as? AnimationPlayer
+		animationPlumber = getNodeOrNull("AnimationPlumber") as? AnimationPlayer
+		animationWater= getNodeOrNull("AnimationWater") as? AnimationPlayer
 	}
 
 	@RegisterFunction
@@ -41,7 +41,7 @@ class PlumberMan : Node2D() {
 		val y = getPosition().y
 		if (y < minY) direction = 1
 		if (y > maxY) direction = -1
-		animationPlayer2?.play("Water")
+		animationWater?.play("Water")
 
 	}
 
@@ -57,7 +57,7 @@ class PlumberMan : Node2D() {
 	private fun crearProyectil() {
 		val projectileScene = GD.load<PackedScene>("res://Objects/Plumber/projectile_container.tscn")
 		val proyectil = projectileScene?.instantiate() as Node2D
-		animationPlayer?.play("Plumber")
+		animationPlumber?.play("Plumber")
 
 		val fase = throwCount % 3
 		val (velocidad, tamano) = when (fase) {
@@ -98,17 +98,4 @@ class PlumberMan : Node2D() {
 			}
 		}
 	}
-
-//	@RegisterFunction
-//	fun _on_projectile_hit(body: Node) {
-//		if (body.isInGroup("player")) {
-//			GD.print("Cucca fue alcanzada — GAME OVER")
-//			val cucca = body as? Node
-//			val dieMethod = StringName("die")
-//			if (cucca != null && cucca.hasMethod(dieMethod)) {
-//				cucca.call(dieMethod)
-//				GD.print("Método 'die()' ejecutado correctamente.")
-//			}
-//		}
-//	}
 }

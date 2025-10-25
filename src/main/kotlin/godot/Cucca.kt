@@ -22,7 +22,7 @@ class Cucca : RigidBody2D() {
 	private var isDead = false
 	private var flap: AudioStreamPlayer? = null
 	private var butter: AudioStreamPlayer? = null
-	private var animationPlayer: AnimationPlayer? = null
+	private var animationCuca: AnimationPlayer? = null
 	private var floorAnimation: AnimationPlayer? = null
 
 
@@ -60,9 +60,9 @@ class Cucca : RigidBody2D() {
 			flap?.play()
 			linearVelocity = Vector2(linearVelocity.x, 0.0)
 			applyCentralImpulse(Vector2(0.0, -jumpPower))
-			animationPlayer = getNodeOrNull("AnimationPlayer") as?
+			animationCuca = getNodeOrNull("AnimationCuca") as?
 			AnimationPlayer
-			animationPlayer?.play("Cuca")
+			animationCuca?.play("Cuca")
 		}
 	}
 

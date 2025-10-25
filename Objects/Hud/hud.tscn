@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://6q65cp2smcg7"]
+[gd_scene load_steps=3 format=3 uid="uid://6q65cp2smcg7"]
 
 [ext_resource type="Script" uid="uid://d3sojqvfncy1k" path="res://src/main/GDS/hud.gd" id="1_5jxev"]
+[ext_resource type="Theme" uid="uid://c8eifw5fs4r81" path="res://src/main/resources/Sprites/UI/escribir.tres" id="2_2w8vg"]
 
 [node name="HUD" type="CanvasLayer"]
 follow_viewport_scale = 2.0
 script = ExtResource("1_5jxev")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 295.0
-offset_top = 6.0
-offset_right = 353.0
-offset_bottom = 29.0
+offset_left = 290.0
+offset_top = -4.0
+offset_right = 357.0
+offset_bottom = 30.0
+theme = ExtResource("2_2w8vg")
 text = "Tiempo"
 horizontal_alignment = 1
 
@@ -23,6 +25,7 @@ offset_top = 20.0
 offset_right = -14.0
 offset_bottom = 60.0
 grow_horizontal = 0
+theme = ExtResource("2_2w8vg")
 
 [node name="Minutos" type="Label" parent="BoxContainer"]
 layout_mode = 2

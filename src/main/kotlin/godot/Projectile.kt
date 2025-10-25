@@ -15,9 +15,12 @@ class Projectile : Area2D() {
 
 	private var speed = 600.0
 	private var direction = Vector2(-1.0, 0.0)
+	private var animationLlave: AnimationPlayer? = null
 
 	@RegisterFunction
 	override fun _ready() {
+		animationLlave= getNodeOrNull("AnimationLlave") as? AnimationPlayer
+		animationLlave?.play("Llave")
 	}
 
 	@RegisterFunction
