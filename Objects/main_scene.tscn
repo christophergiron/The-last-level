@@ -21,9 +21,6 @@ texture = ExtResource("2_35kc2")
 [node name="Cucca" parent="." groups=["player"] instance=ExtResource("2_gyfs4")]
 position = Vector2(22, 87)
 
-[node name="Piso" parent="." instance=ExtResource("4_hq1ik")]
-position = Vector2(248, 650)
-
 [node name="Techo" parent="." instance=ExtResource("3_8mm7a")]
 position = Vector2(177, -16)
 
@@ -40,6 +37,9 @@ position = Vector2(271, 305)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_b55mc")
 autoplay = true
+
+[node name="Piso" parent="." instance=ExtResource("4_hq1ik")]
+position = Vector2(248, 650)
 
 [connection signal="timeM_update" from="Game Controller" to="HUD" method="_on_game_controller_time_m_update"]
 [connection signal="timeS_update" from="Game Controller" to="HUD" method="_on_game_controller_time_s_update"]

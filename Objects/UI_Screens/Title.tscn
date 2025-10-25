@@ -14,13 +14,25 @@
 [node name="TitleScreen" type="CanvasLayer"]
 script = ExtResource("1_gksxk")
 
-[node name="Piso2" type="Sprite2D" parent="."]
-position = Vector2(180, 683)
-texture = ExtResource("2_fbwqb")
-
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(180, 320)
 texture = ExtResource("2_cmtfp")
+
+[node name="Piso4" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 557)
+texture = ExtResource("2_fbwqb")
+
+[node name="Piso2" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 363)
+texture = ExtResource("2_fbwqb")
+
+[node name="Tittle" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, -104)
+texture = ExtResource("9_j8s4i")
+
+[node name="Piso3" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 460)
+texture = ExtResource("2_fbwqb")
 
 [node name="Start" type="Button" parent="."]
 anchors_preset = 7
@@ -90,10 +102,6 @@ autoplay = true
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_iw7rj")
-
-[node name="Tittle" type="Sprite2D" parent="."]
-position = Vector2(180, 216)
-texture = ExtResource("9_j8s4i")
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Leaderbords" to="." method="_on_leaderbords_button_down"]

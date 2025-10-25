@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0638vihowk71"]
+[gd_scene load_steps=10 format=3 uid="uid://0638vihowk71"]
 
 [ext_resource type="Script" uid="uid://ds6f2e4jolfum" path="res://src/main/kotlin/godot/UI/Menus/Leaderboards_off.kt" id="1_af28g"]
 [ext_resource type="AudioStream" uid="uid://c8gmmjwmon6gq" path="res://src/main/resources/Music/Cipher [TubeRipper.cc].ogg" id="1_ef2s1"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b1v76l55h7n5" path="res://src/main/resources/SFX/swoosh.ogg" id="2_af28g"]
 [ext_resource type="Theme" uid="uid://c8eifw5fs4r81" path="res://src/main/resources/Sprites/UI/escribir.tres" id="2_vxbou"]
 [ext_resource type="Texture2D" uid="uid://b267uoi40hjkh" path="res://src/main/resources/Sprites/UI/Fondo Label.png" id="3_cuhhr"]
+[ext_resource type="Texture2D" uid="uid://s711rdjks7fa" path="res://src/main/resources/Sprites/UI/Piso 2.png" id="3_elqpb"]
 [ext_resource type="Theme" uid="uid://dwnrh548tftia" path="res://src/main/resources/Sprites/UI/Back.tres" id="3_j2abk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sdk3"]
@@ -23,6 +24,18 @@ script = ExtResource("1_af28g")
 modulate = Color(0.30980393, 0.7294118, 1, 1)
 position = Vector2(180, 320)
 texture = ExtResource("2_1sdk3")
+
+[node name="Piso2" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 363)
+texture = ExtResource("3_elqpb")
+
+[node name="Piso3" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 461)
+texture = ExtResource("3_elqpb")
+
+[node name="Piso4" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 557)
+texture = ExtResource("3_elqpb")
 
 [node name="Atras" type="Button" parent="."]
 anchors_preset = 7

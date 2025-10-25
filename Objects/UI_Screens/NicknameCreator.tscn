@@ -26,6 +26,18 @@ modulate = Color(0.9999997, 0.87197167, 0.60612756, 1)
 position = Vector2(180, 320)
 texture = ExtResource("2_wb6fh")
 
+[node name="Piso3" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 459)
+texture = ExtResource("8_hv4o8")
+
+[node name="Piso4" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 556)
+texture = ExtResource("8_hv4o8")
+
+[node name="Piso2" type="Sprite2D" parent="Fondo"]
+position = Vector2(0, 363)
+texture = ExtResource("8_hv4o8")
+
 [node name="Ok" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,11 +125,6 @@ autoplay = true
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_v4073")
-
-[node name="Piso2" type="Sprite2D" parent="."]
-modulate = Color(0.9230165, 0.9141513, 0.76837337, 1)
-position = Vector2(180, 683)
-texture = ExtResource("8_hv4o8")
 
 [connection signal="button_down" from="Ok" to="." method="_on_ok_button_down"]
 [connection signal="timeout" from="Ok/GoToMainTimer" to="." method="_on_go_to_main_timer_timeout"]

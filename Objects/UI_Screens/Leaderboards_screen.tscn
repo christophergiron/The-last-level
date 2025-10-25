@@ -18,15 +18,33 @@ modulate = Color(0.4930995, 0.7215703, 0.85266834, 1)
 position = Vector2(180, 321)
 texture = ExtResource("2_g1abl")
 
+[node name="Piso2" type="Sprite2D" parent="."]
+modulate = Color(0.80127037, 0.7361004, 0.86780596, 1)
+position = Vector2(180, 683)
+texture = ExtResource("8_villt")
+
+[node name="Piso4" type="Sprite2D" parent="Piso2"]
+position = Vector2(1, 192)
+texture = ExtResource("8_villt")
+
+[node name="Piso2" type="Sprite2D" parent="Piso2"]
+modulate = Color(0.80127037, 0.7361004, 0.86780596, 1)
+position = Vector2(180, 683)
+texture = ExtResource("8_villt")
+
+[node name="Piso3" type="Sprite2D" parent="Piso2"]
+position = Vector2(1, 97)
+texture = ExtResource("8_villt")
+
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
+offset_left = -71.0
 offset_top = -193.0
-offset_right = 84.0
+offset_right = 81.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -83,11 +101,6 @@ autoplay = true
 
 [node name="swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_547nq")
-
-[node name="Piso2" type="Sprite2D" parent="."]
-modulate = Color(0.80127037, 0.7361004, 0.86780596, 1)
-position = Vector2(180, 683)
-texture = ExtResource("8_villt")
 
 [connection signal="button_down" from="Local" to="." method="_on_local_button_down"]
 [connection signal="button_down" from="Online" to="." method="_on_online_button_down"]
